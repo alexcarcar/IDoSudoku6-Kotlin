@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">IDoSudoku6</string>
+    <string name="about">About</string>
+    <string name="new_game">New Game</string>
+    <string name="switch_symbols">Switch Symbols</string>
+    <string name="sound_on">Sound On</string>
+    <string name="sudoku">Sudoku</string>
+</resources>
