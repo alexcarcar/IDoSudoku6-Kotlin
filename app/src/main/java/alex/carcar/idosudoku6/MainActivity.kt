@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         View.OnClickListener {
 
         private lateinit var square: Square
-            set
         private val squareView: Button = itemView.findViewById(R.id.square)
 
         init {
