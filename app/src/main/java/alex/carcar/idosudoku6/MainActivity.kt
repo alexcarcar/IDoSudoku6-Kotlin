@@ -11,7 +11,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import carcar.alex.idosudoku6.Sudoku
 
 private const val TAG = "MainActivity"
 
@@ -23,8 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Sudoku.create()
-        adapter = BoardAdapter(convertToSquares(Sudoku.board))
+        Board.create()
+        adapter = BoardAdapter(convertToSquares(Board.data))
         boardRecyclerView = findViewById(R.id.board_recycler_view)
         boardRecyclerView.layoutManager = GridLayoutManager(applicationContext, 6)
         boardRecyclerView.hasFixedSize()
