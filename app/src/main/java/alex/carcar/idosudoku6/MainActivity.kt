@@ -105,8 +105,8 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount() = squares.size
 
         override fun onBindViewHolder(holder: SquareHolder, position: Int) {
-            val crime = squares[position]
-            holder.bind(crime)
+            val square = squares[position]
+            holder.bind(square)
         }
     }
 }
