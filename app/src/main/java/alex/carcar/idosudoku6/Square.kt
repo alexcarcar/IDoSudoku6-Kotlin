@@ -1,7 +1,5 @@
 package alex.carcar.idosudoku6
 
-import java.util.*
-
 data class Square(
     val row: Int = 0,
     val col: Int = 0,
