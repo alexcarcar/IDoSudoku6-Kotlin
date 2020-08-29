@@ -5,27 +5,27 @@
     <item
         android:id="@+id/soundClick"
         android:icon="@drawable/ic_sound_on"
-        android:onClick="onSoundClick"
+        android:onClick="clickSound"
         android:title="@string/sound_on"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/newGame"
         android:icon="@drawable/ic_new_game"
-        android:onClick="onNewGameClick"
+        android:onClick="clickNewGame"
         android:title="@string/new_game"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/switchSymbols"
         android:icon="@drawable/ic_action_letters"
-        android:onClick="onSwitchSymbolsClick"
+        android:onClick="clickSwitchSymbols"
         android:title="@string/switch_symbols"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/aboutMeMenuItem"
-        android:onClick="onAboutClick"
+        android:onClick="clickAbout"
         android:title="@string/about" />
 
 </menu>

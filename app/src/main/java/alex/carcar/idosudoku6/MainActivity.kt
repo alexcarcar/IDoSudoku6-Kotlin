@@ -16,22 +16,22 @@ private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var boardRecyclerView: RecyclerView
-    private var adapter: BoardAdapter? = BoardAdapter(emptyList())
+    private lateinit var boardView: RecyclerView
+    private var aBoard: ABoard? = ABoard(emptyList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Board.create()
-        adapter = BoardAdapter(convertToSquares(Board.data))
-        boardRecyclerView = findViewById(R.id.board_recycler_view)
-        boardRecyclerView.layoutManager = GridLayoutManager(applicationContext, 6)
-        boardRecyclerView.hasFixedSize()
-        boardRecyclerView.adapter = adapter
+        aBoard = ABoard(mapSquares(Board.data))
+        boardView = findViewById(R.id.board_recycler_view)
+        boardView.layoutManager = GridLayoutManager(applicationContext, 6)
+        boardView.hasFixedSize()
+        boardView.adapter = aBoard
     }
 
 
-    private fun convertToSquares(board: Array<IntArray>?): List<Square> {
+    private fun mapSquares(board: Array<IntArray>?): List<Square> {
         val squares = mutableListOf<Square>()
         var i: Int = -1
         var j: Int
@@ -51,12 +51,12 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    fun onNewGameClick(item: MenuItem) {}
-    fun onSwitchSymbolsClick(item: MenuItem) {}
-    fun onAboutClick(item: MenuItem) {}
-    fun onSoundClick(item: MenuItem) {}
+    fun clickNewGame(item: MenuItem) {}
+    fun clickSwitchSymbols(item: MenuItem) {}
+    fun clickAbout(item: MenuItem) {}
+    fun clickSound(item: MenuItem) {}
 
-    private inner class SquareHolder(view: View) : RecyclerView.ViewHolder(view),
+    private inner class ASquare(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
 
         private lateinit var square: Square
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     if (g1) R.color.group1Dark else R.color.group2Dark
             )
             this.square = square
-            val squareSize = boardRecyclerView.width / 6
+            val squareSize = boardView.width / 6
             squareView.width = squareSize
             squareView.height = squareSize
             squareView.setTextSize(TypedValue.COMPLEX_UNIT_PX, squareSize * 0.5F)
@@ -94,19 +94,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class BoardAdapter(var squares: List<Square>) :
-        RecyclerView.Adapter<SquareHolder>() {
+    private inner class ABoard(var squares: List<Square>) :
+        RecyclerView.Adapter<ASquare>() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SquareHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ASquare {
             val view = layoutInflater.inflate(R.layout.square, parent, false)
-            return SquareHolder(view)
+            return ASquare(view)
         }
 
         override fun getItemCount() = squares.size
 
-        override fun onBindViewHolder(holder: SquareHolder, position: Int) {
+        override fun onBindViewHolder(aSquare: ASquare, position: Int) {
             val square = squares[position]
-            holder.bind(square)
+            aSquare.bind(square)
         }
     }
 }
